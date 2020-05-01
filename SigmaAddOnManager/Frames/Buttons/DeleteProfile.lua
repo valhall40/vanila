@@ -23,9 +23,9 @@ end
 function SAOM.DeleteProfile:OnClick()
 	-- Check if a valid profile is selected
 	local i = UIDropDownMenu_GetSelectedID(SAOM.ProfilesList) - 1;
-	if Sigma_AddOnManager and Sigma_AddOnManager[i] then
+	if SigmaAddOnManager and SigmaAddOnManager[i] then
 		-- Remove the profile from the table
-		table.remove(Sigma_AddOnManager, i);
+		table.remove(SigmaAddOnManager, i);
 	end
 	-- Update the DropDown menu
 	SAOM.ProfilesList:OnShow();

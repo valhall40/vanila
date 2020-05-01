@@ -23,8 +23,8 @@ end
 function SAOM.PopUpDialog:OnAccept(data, data2)
 	
 	-- If there is no table create one
-	if not Sigma_AddOnManager then
-		Sigma_AddOnManager = {};
+	if not SigmaAddOnManager then
+		SigmaAddOnManager = {};
 	end
 	
 	-- Get the profile name from dialog.data
@@ -37,23 +37,23 @@ function SAOM.PopUpDialog:OnAccept(data, data2)
 	
 	-- If a profile with the same name already exist, override it
 	local addons = {};
-	for i,profile in ipairs(Sigma_AddOnManager) do
+	for i,profile in ipairs(SigmaAddOnManager) do
 		if profileName == profile.name then
-			SAOM:SaveAddOnProfile(Sigma_AddOnManager[i].addons);
+			SAOM:SaveAddOnProfile(SigmaAddOnManager[i].addons);
 			SAOM.ProfilesList:OnShow();
 			return;
 		end
 	end
 	
 	-- Otherwise create a new profile
-	table.insert(Sigma_AddOnManager, { name = profileName, addons = SAOM:SaveAddOnProfile() });
+	table.insert(SigmaAddOnManager, { name = profileName, addons = SAOM:SaveAddOnProfile() });
 	
 	-- Update the DropDown menu
 	SAOM.ProfilesList:OnShow();
 end
 
 -- Add the static information for the dialog
-StaticPopupDialogs["Sigma_AddOnManager_SAVE"] = {
+StaticPopupDialogs["SigmaAddOnManager_SaveProfile"] = {
 	text = "Enter profile name",
 	button1 = "Accept",
 	button2 = "Cancel",
