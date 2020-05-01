@@ -1,0 +1,74 @@
+local addonName, SAOM = ...;
+
+-- Save the current AddOn Profile
+function SAOM:SaveAddOnProfile(addons)
+	
+	-- If there is no table create one
+	if not addons then
+		addons = {};
+	end
+	
+	-- Check the Character DropDown selection
+	local character = AddonCharacterDropDown.selectedValue;
+	if character == true then
+		character = nil;
+	end
+	
+	-- Save the state of every AddOn
+	for i=1,GetNumAddOns() do
+		local name = GetAddOnInfo(i);
+		local enabled = (GetAddOnEnableState(character, i) > 0);
+		if enabled then
+			addons[name] = "On";
+		else
+			addons[name] = "Off";
+		end
+	end
+	
+	-- Return the table
+	return addons;
+end
+
+function SAOM:LoadAddOnProfile(addons)
+	
+	-- If there is no table stop here
+	if not addons then
+		return;
+	end
+	
+	-- Load only the state of saved AddOns
+	for i=1,GetNumAddOns() do
+		local name = GetAddOnInfo(i);
+		if addons[name] == "On" then
+			AddonList_Enable(i, true);
+		elseif addons[name] == "Off" then
+			AddonList_Enable(i, false);
+		end
+	end
+end
+
+-- Fix Blizz AddonList Errors
+
+function SAOM.GetAddOnInfo(index)
+	if index and type(index) == "number" then
+		if index < 1 or index > GetNumAddOns() then
+			return;
+		end
+	end
+	return SAOM.baseGetAddOnInfo(index);
+end
+
+SAOM.baseGetAddOnInfo = GetAddOnInfo;
+GetAddOnInfo = SAOM.GetAddOnInfo;
+
+function SAOM.GetAddOnDependencies(index)
+	if index and type(index) == "number" then
+		if index < 1 or index > GetNumAddOns() then
+			return;
+		end
+	end
+	return SAOM.baseGetAddOnDependencies(index);
+end
+
+SAOM.baseGetAddOnDependencies = GetAddOnDependencies;
+GetAddOnDependencies = SAOM.GetAddOnDependencies;
