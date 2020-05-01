@@ -1,4 +1,4 @@
-local addonName, SAOM = ...;
+local _, SAOM = ...;
 
 -- Create the Button
 SAOM.DeleteProfile = CreateFrame("Button", nil, AddonList, "MagicButtonTemplate");

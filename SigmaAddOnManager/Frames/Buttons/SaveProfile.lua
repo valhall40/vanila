@@ -1,4 +1,4 @@
-local addonName, SAOM = ...;
+local _, SAOM = ...;
 
 -- Create the Button
 SAOM.SaveProfile = CreateFrame("Button", nil, AddonList, "MagicButtonTemplate");

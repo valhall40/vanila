@@ -1,4 +1,4 @@
-local addonName, SAOM = ...;
+local _, SAOM = ...;
 
 -- Create the DropDown menu
 SAOM.ProfilesList = CreateFrame("Frame", "SigmaAddOnManager_ProfilesList", AddonList, "UIDropDownMenuTemplate");

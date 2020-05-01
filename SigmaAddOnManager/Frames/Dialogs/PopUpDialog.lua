@@ -1,4 +1,4 @@
-local addonName, SAOM = ...;
+local _, SAOM = ...;
 
 -- Create an empty table for the dialog
 SAOM.PopUpDialog = {};

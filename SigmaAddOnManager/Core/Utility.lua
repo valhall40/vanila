@@ -1,4 +1,4 @@
-local addonName, SAOM = ...;
+local _, SAOM = ...;
 
 -- Save the current AddOn Profile
 function SAOM:SaveAddOnProfile(addons)
