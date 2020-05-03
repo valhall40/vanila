@@ -54,9 +54,9 @@ end
 
 -- Add the static information for the dialog
 StaticPopupDialogs["SigmaAddOnManager_SaveProfile"] = {
-	text = "Enter profile name",
-	button1 = "Accept",
-	button2 = "Cancel",
+	text = SAOM.L["INPUT_NAME"],
+	button1 = SAOM.L["ACCEPT"],
+	button2 = SAOM.L["CANCEL"],
 	OnAccept = SAOM.PopUpDialog.OnAccept,
 	timeout = 0,
 	whileDead = true,

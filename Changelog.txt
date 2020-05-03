@@ -1,3 +1,8 @@
+**v0.2.0**
+
+- Added support for localization
+
+
 **v0.1.0**
 
 - First Full Release

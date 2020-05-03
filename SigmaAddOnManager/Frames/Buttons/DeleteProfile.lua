@@ -10,10 +10,9 @@ function SAOM.DeleteProfile:OnLoad()
 	-- Set size and position
 	SAOM.DeleteProfile:SetWidth(32);
 	SAOM.DeleteProfile:SetHeight(19);
-	--SAOM.DeleteProfile:SetPoint("LEFT", SAOM.ProfilesList, "RIGHT", 110, 2);
 	SAOM.DeleteProfile:SetPoint("LEFT", SigmaAddOnManager_ProfilesListButton, "RIGHT", 0, -1);
 	-- Set text and font
-	SAOM.DeleteProfile:SetText("DEL");
+	SAOM.DeleteProfile:SetText(SAOM.L["DEL"]);
 	local font, size = SAOM.DeleteProfile:GetFontString():GetFont();
 	SAOM.DeleteProfile:GetFontString():SetFont(font, 10);
 	-- Set Scripts
