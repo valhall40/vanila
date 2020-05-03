@@ -31,7 +31,7 @@ end
 function SAOM.ProfilesList:Initialize()
 	-- The first button is not a profile
 	local info = {};
-	info.text = "Select Profile";
+	info.text = SAOM.L["SELECT"];
 	info.func = SAOM.ProfilesList.OnClick;
 	info.checked = false;
 	UIDropDownMenu_AddButton(info);
