@@ -1,3 +1,8 @@
+**v0.3.0**
+
+- Updated to current interface
+
+
 **v0.2.0**
 
 - Added support for localization

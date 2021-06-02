@@ -1,7 +1,7 @@
-## Interface: 11304
-## Title: Sigma |cffbc5ff4AddOn Manager|r |cff2e91f3(Classic)|r
+## Interface: 20501
+## Title: Sigma |cffbc5ff4AddOn Manager|r |cffb1f22e(TBC Classic)|r
 ## Author: Sigma88
-## Notes: v0.2.0 |cff00ff00Release|r
+## Notes: v0.3.0 |cff00ff00Release|r
 ## SavedVariablesPerCharacter: SigmaAddOnManager
 
 SigmaAddOnManager.lua
