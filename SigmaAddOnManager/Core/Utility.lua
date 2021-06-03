@@ -72,3 +72,25 @@ end
 
 SAOM.baseGetAddOnDependencies = GetAddOnDependencies;
 GetAddOnDependencies = SAOM.GetAddOnDependencies;
+
+function SAOM.trim(str)
+	return (str:gsub("^%s*(.-)%s*$", "%1"));
+end
+
+function SAOM.GetNumAddOns()
+	
+	local numAddons = 0;
+	
+	if GetNumAddOns() and GetNumAddOns() > 0 then
+		local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
+		for i=1, GetNumAddOns() do
+			local name = GetAddOnInfo(i);
+			
+			if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
+				numAddons = numAddons + 1;
+			end
+		end
+	end
+	
+	return numAddons;
+end

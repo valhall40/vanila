@@ -1,3 +1,8 @@
+**v0.3.1**
+
+- Added SearchBox to filter AddOns by name
+
+
 **v0.3.0**
 
 - Updated to current interface
