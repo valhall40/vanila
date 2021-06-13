@@ -9,4 +9,5 @@ if ElvUI then
 	S:HandleButton(SAOM.DeleteProfile, true);
 	S:HandleButton(SAOM.SaveProfile, true);
 	S:HandleDropDownBox(SAOM.ProfilesList, 165);
+	S:HandleEditBox(SAOM.SearchBox);
 end

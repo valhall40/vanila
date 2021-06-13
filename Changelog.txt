@@ -1,3 +1,9 @@
+**v0.3.2**
+
+- Fixed ElvUI Compatibility
+- Minor bug fixes
+
+
 **v0.3.1**
 
 - Added SearchBox to filter AddOns by name
