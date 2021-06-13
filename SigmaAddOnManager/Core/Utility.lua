@@ -31,6 +31,10 @@ end
 
 function SAOM:LoadAddOnProfile(addons)
 	
+	-- Clear the SearchBox
+    SAOM.SearchBox:SetText("");
+    SAOM.SearchBox:ClearFocus();
+	
 	-- If there is no table stop here
 	if not addons then
 		return;
