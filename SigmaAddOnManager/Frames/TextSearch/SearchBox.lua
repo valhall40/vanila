@@ -161,5 +161,12 @@ function SAOM.AddonList_Update()
 	FauxScrollFrame_Update(AddonListScrollFrame, numEntrys, MAX_ADDONS_DISPLAYED, ADDON_BUTTON_HEIGHT);
 end
 
+function SAOM.AddonList_FirstUpdate()
+	if not SAOM.HOOKED then
+		SAOM.HOOKED = true;
+		hooksecurefunc("AddonList_Update", SAOM.AddonList_Update);
+		AddonList_Update();
+	end
+end
 
-hooksecurefunc("AddonList_Update", SAOM.AddonList_Update);
+hooksecurefunc("AddonList_Update", SAOM.AddonList_FirstUpdate);
