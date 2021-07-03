@@ -50,29 +50,29 @@ function SAOM.GetAddonIndex(entryIndex)
 	end
 	
 	if not SAOM.DATA[entryIndex] then
-	
-	local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
-	local index = 0;
-	
-	if GetNumAddOns() and GetNumAddOns() > 0 then
-		for i=1, GetNumAddOns() do
-			
-			local name, title, notes, loadable, reason, security, newVersion = GetAddOnInfo(i);
-			
-			if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
-				index = index + 1;
+		
+		local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
+		local index = 0;
+		
+		if GetNumAddOns() and GetNumAddOns() > 0 then
+			for i=1, GetNumAddOns() do
 				
-				if index == entryIndex then
-					SAOM.DATA[entryIndex] = i;
+				local name, title, notes, loadable, reason, security, newVersion = GetAddOnInfo(i);
+				
+				if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
+					index = index + 1;
+					
+					if index == entryIndex then
+						SAOM.DATA[entryIndex] = i;
+					end
 				end
 			end
 		end
-	end
-	
-	if not SAOM.DATA[entryIndex] then
-		SAOM.DATA[entryIndex] = 0;
-	end
-	
+		
+		if not SAOM.DATA[entryIndex] then
+			SAOM.DATA[entryIndex] = 0;
+		end
+		
 	end
 	
 	return SAOM.DATA[entryIndex];
