@@ -34,8 +34,10 @@ end
 
 function SAOM.SearchBox.OnTextChanged()
 	AddonList.offset = 0;
-	AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
-	AddonList_Update();
+	if AddonListScrollFrame then
+		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
+	end
+	SAOM.AddonList_Update();
 end
 
 SAOM.SearchBox.OnLoad();
