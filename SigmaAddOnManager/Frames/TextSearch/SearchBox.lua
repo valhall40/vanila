@@ -33,6 +33,7 @@ function SAOM.SearchBox.OnEscapePressed()
 end
 
 function SAOM.SearchBox.OnTextChanged()
+	SAOM.DATA = nil;
 	AddonList.offset = 0;
 	if AddonListScrollFrame then
 		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
@@ -43,6 +44,12 @@ end
 SAOM.SearchBox.OnLoad();
 
 function SAOM.GetAddonIndex(entryIndex)
+	
+	if not SAOM.DATA then
+		SAOM.DATA = {};
+	end
+	
+	if not SAOM.DATA[entryIndex] then
 	
 	local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
 	local index = 0;
@@ -56,13 +63,19 @@ function SAOM.GetAddonIndex(entryIndex)
 				index = index + 1;
 				
 				if index == entryIndex then
-					return i;
+					SAOM.DATA[entryIndex] = i;
 				end
 			end
 		end
 	end
 	
-	return 0;
+	if not SAOM.DATA[entryIndex] then
+		SAOM.DATA[entryIndex] = 0;
+	end
+	
+	end
+	
+	return SAOM.DATA[entryIndex];
 end
 
 function SAOM.AddonList_Update()
