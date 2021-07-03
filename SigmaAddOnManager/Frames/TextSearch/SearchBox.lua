@@ -33,34 +33,49 @@ function SAOM.SearchBox.OnEscapePressed()
 end
 
 function SAOM.SearchBox.OnTextChanged()
+	SAOM.DATA = nil;
 	AddonList.offset = 0;
-	AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
-	AddonList_Update();
+	if AddonListScrollFrame then
+		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
+	end
+	SAOM.AddonList_Update();
 end
 
 SAOM.SearchBox.OnLoad();
 
 function SAOM.GetAddonIndex(entryIndex)
 	
-	local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
-	local index = 0;
+	if not SAOM.DATA then
+		SAOM.DATA = {};
+	end
 	
-	if GetNumAddOns() and GetNumAddOns() > 0 then
-		for i=1, GetNumAddOns() do
-			
-			local name, title, notes, loadable, reason, security, newVersion = GetAddOnInfo(i);
-			
-			if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
-				index = index + 1;
+	if not SAOM.DATA[entryIndex] then
+		
+		local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
+		local index = 0;
+		
+		if GetNumAddOns() and GetNumAddOns() > 0 then
+			for i=1, GetNumAddOns() do
 				
-				if index == entryIndex then
-					return i;
+				local name, title, notes, loadable, reason, security, newVersion = GetAddOnInfo(i);
+				
+				if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
+					index = index + 1;
+					
+					if index == entryIndex then
+						SAOM.DATA[entryIndex] = i;
+					end
 				end
 			end
 		end
+		
+		if not SAOM.DATA[entryIndex] then
+			SAOM.DATA[entryIndex] = 0;
+		end
+		
 	end
 	
-	return 0;
+	return SAOM.DATA[entryIndex];
 end
 
 function SAOM.AddonList_Update()
