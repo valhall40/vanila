@@ -83,18 +83,27 @@ end
 
 function SAOM.GetNumAddOns()
 	
-	local numAddons = 0;
-	
-	if GetNumAddOns() and GetNumAddOns() > 0 then
-		local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
-		for i=1, GetNumAddOns() do
-			local name = GetAddOnInfo(i);
-			
-			if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
-				numAddons = numAddons + 1;
+	if not SAOM.NumAddOns then
+		
+		local totAddOns = GetNumAddOns();
+		local numAddOns = 0;
+		
+		if totAddOns and totAddOns > 0 then
+			local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
+			for i=1, totAddOns do
+				local name = GetAddOnInfo(i);
+				
+				if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
+					numAddOns = numAddOns + 1;
+				end
 			end
 		end
+		
+		if numAddOns > 0 then
+			SAOM.NumAddOns = numAddOns;
+		end
+		
 	end
 	
-	return numAddons;
+	return SAOM.NumAddOns or 0;
 end
