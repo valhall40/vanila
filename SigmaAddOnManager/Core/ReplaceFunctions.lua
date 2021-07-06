@@ -1,3 +1,5 @@
+local _, SAOM = ...;
+
 -- Fix Blizz AddonList Errors
 
 function SAOM.GetAddOnInfo(index)
