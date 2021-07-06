@@ -9,6 +9,7 @@ SigmaAddOnManager.lua
 Localization\enUS.lua
 
 Core\Utility.lua
+Core\ReplaceFunctions.lua
 
 Frames\DropDowns\ProfilesList.lua
 

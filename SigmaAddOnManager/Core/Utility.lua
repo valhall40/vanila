@@ -51,32 +51,6 @@ function SAOM:LoadAddOnProfile(addons)
 	end
 end
 
--- Fix Blizz AddonList Errors
-
-function SAOM.GetAddOnInfo(index)
-	if index and type(index) == "number" then
-		if index < 1 or index > GetNumAddOns() then
-			return;
-		end
-	end
-	return SAOM.baseGetAddOnInfo(index);
-end
-
-SAOM.baseGetAddOnInfo = GetAddOnInfo;
-GetAddOnInfo = SAOM.GetAddOnInfo;
-
-function SAOM.GetAddOnDependencies(index)
-	if index and type(index) == "number" then
-		if index < 1 or index > GetNumAddOns() then
-			return;
-		end
-	end
-	return SAOM.baseGetAddOnDependencies(index);
-end
-
-SAOM.baseGetAddOnDependencies = GetAddOnDependencies;
-GetAddOnDependencies = SAOM.GetAddOnDependencies;
-
 function SAOM.trim(str)
 	return (str:gsub("^%s*(.-)%s*$", "%1"));
 end
