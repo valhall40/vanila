@@ -37,7 +37,7 @@ function SAOM.SearchBox.OnTextChanged()
 	SAOM.NumAddOns = nil;
 	AddonList.offset = 0;
 	if AddonListScrollFrame then
-		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
+		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 1);
 	end
 	SAOM.AddonList_Update();
 end
