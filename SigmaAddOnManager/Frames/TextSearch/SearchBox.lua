@@ -34,6 +34,7 @@ end
 
 function SAOM.SearchBox.OnTextChanged()
 	SAOM.DATA = nil;
+	SAOM.NumAddOns = nil;
 	AddonList.offset = 0;
 	if AddonListScrollFrame then
 		AddonListScrollFrame_OnVerticalScroll(AddonListScrollFrame, 0);
@@ -80,7 +81,7 @@ end
 
 function SAOM.AddonList_Update()
 	local numAddOns = GetNumAddOns();
-	local numEntrys = SAOM:GetNumAddOns();
+	local numEntrys = SAOM.GetNumAddOns();
 	local name, title, notes, enabled, loadable, reason, security;
 	local addonIndex, entryIndex;
 	local entry, checkbox, string, status, urlButton, securityIcon, versionButton;

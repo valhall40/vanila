@@ -1,3 +1,9 @@
+**v0.3.4**
+
+- Fixed occasional nullref errors
+- Reduced lag by reducing the number of calculations
+
+
 **v0.3.3**
 
 - Fixed occasional nullref errors
