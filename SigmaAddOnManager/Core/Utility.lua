@@ -51,50 +51,33 @@ function SAOM:LoadAddOnProfile(addons)
 	end
 end
 
--- Fix Blizz AddonList Errors
-
-function SAOM.GetAddOnInfo(index)
-	if index and type(index) == "number" then
-		if index < 1 or index > GetNumAddOns() then
-			return;
-		end
-	end
-	return SAOM.baseGetAddOnInfo(index);
-end
-
-SAOM.baseGetAddOnInfo = GetAddOnInfo;
-GetAddOnInfo = SAOM.GetAddOnInfo;
-
-function SAOM.GetAddOnDependencies(index)
-	if index and type(index) == "number" then
-		if index < 1 or index > GetNumAddOns() then
-			return;
-		end
-	end
-	return SAOM.baseGetAddOnDependencies(index);
-end
-
-SAOM.baseGetAddOnDependencies = GetAddOnDependencies;
-GetAddOnDependencies = SAOM.GetAddOnDependencies;
-
 function SAOM.trim(str)
 	return (str:gsub("^%s*(.-)%s*$", "%1"));
 end
 
 function SAOM.GetNumAddOns()
 	
-	local numAddons = 0;
-	
-	if GetNumAddOns() and GetNumAddOns() > 0 then
-		local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
-		for i=1, GetNumAddOns() do
-			local name = GetAddOnInfo(i);
-			
-			if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
-				numAddons = numAddons + 1;
+	if not SAOM.NumAddOns then
+		
+		local totAddOns = GetNumAddOns();
+		local numAddOns = 0;
+		
+		if totAddOns and totAddOns > 0 then
+			local searchFilter = SAOM.trim(SAOM.SearchBox:GetText():lower());
+			for i=1, totAddOns do
+				local name = GetAddOnInfo(i);
+				
+				if strmatch(SAOM.trim(name:lower()), searchFilter) ~= nil then
+					numAddOns = numAddOns + 1;
+				end
 			end
 		end
+		
+		if numAddOns > 0 then
+			SAOM.NumAddOns = numAddOns;
+		end
+		
 	end
 	
-	return numAddons;
+	return SAOM.NumAddOns or 0;
 end
