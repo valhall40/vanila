@@ -1,5 +1,5 @@
-## Interface: 20501
-## Title: Sigma |cffbc5ff4AddOn Manager|r |cffb1f22e(TBC Classic)|r
+## Interface: 11307
+## Title: Sigma |cffbc5ff4AddOn Manager|r |cff2e91f3(Classic)|r
 ## Author: Sigma88
 ## Notes: v0.3.4 |cff00ff00Release|r
 ## SavedVariablesPerCharacter: SigmaAddOnManager
